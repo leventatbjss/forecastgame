@@ -13,6 +13,8 @@ contract Desk {
         address offeror;
         uint16 price;
         uint amount;
+        
+        uint next;
     }
 
     address barman;
@@ -25,8 +27,9 @@ contract Desk {
         barman = msg.sender;
     }
     
-    function back(uint16 price) {
-        var offer = Offer(offerId++,msg.sender,price, msg.value);
-
+    function back(uint16 price) payable {
+        var offer = Offer(++offerId,msg.sender,price, msg.value,0);
     }
+    
+    
 }
